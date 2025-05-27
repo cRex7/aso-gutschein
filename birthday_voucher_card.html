@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geburtstags-Gutschein für Aso</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Open Sans', sans-serif;
+            padding: 20px;
+        }
+        
+        .voucher-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .voucher-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,215,0,0.1), transparent);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+            100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .gift-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        .title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #4a5568;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #718096;
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+        
+        .content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .greeting {
+            font-size: 1.1rem;
+            color: #2d3748;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        
+        .dear-name {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.3rem;
+            color: #667eea;
+            font-weight: 600;
+        }
+        
+        .options-title {
+            font-size: 1.2rem;
+            color: #4a5568;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .option-item {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            padding: 15px;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .option-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+        }
+        
+        .option-item::before {
+            content: '🎯';
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .option-item:nth-child(1)::before { content: '🏃‍♂️'; }
+        .option-item:nth-child(2)::before { content: '🔍'; }
+        .option-item:nth-child(3)::before { content: '🏄‍♀️'; }
+        .option-item:nth-child(4)::before { content: '🌲'; }
+        .option-item:nth-child(5)::before { content: '🌟'; }
+        .option-item:nth-child(6)::before { content: '🎬'; }
+        
+        .option-name {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 5px;
+        }
+        
+        .option-desc {
+            font-size: 0.9rem;
+            color: #718096;
+        }
+        
+        .special-note {
+            background: linear-gradient(135deg, #fef5e7 0%, #fed7aa 100%);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 25px 0;
+            text-align: center;
+            font-style: italic;
+            color: #9c4221;
+            position: relative;
+        }
+        
+        .special-note::before {
+            content: '💡';
+            font-size: 1.5rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .closing {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .wishes {
+            font-size: 1.1rem;
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #667eea;
+            font-weight: 700;
+        }
+        
+        .decorative-border {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 2px dashed #e2e8f0;
+            border-radius: 15px;
+            pointer-events: none;
+        }
+        
+        @media (max-width: 768px) {
+            .voucher-card {
+                padding: 30px 25px;
+            }
+            
+            .title {
+                font-size: 2rem;
+            }
+            
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="voucher-card">
+        <div class="decorative-border"></div>
+        
+        <div class="header">
+            <div class="gift-icon">🎁</div>
+            <h1 class="title">Abenteuer-Gutschein</h1>
+            <p class="subtitle">Ein Geschenk voller Möglichkeiten</p>
+        </div>
+        
+        <div class="content">
+            <div class="greeting">
+                <span class="dear-name">Liebe Aso,</span><br><br>
+                du hast mir schon zwei Mal so coole Gutscheine geschenkt und ich war so begeistert von deinen Ideen, dass ich diesmal einen Gutschein im Gegenzug für dich habe! Da du in deiner Einladung geschrieben hast, dass sich ein Teil von dir über neue Impulse und Überraschungen freut, mache ich dir hier einige Vorschläge.
+            </div>
+            
+            <div class="options-title">🌟 Wähle dein Abenteuer 🌟</div>
+            
+            <div class="options-grid">
+                <div class="option-item">
+                    <div class="option-name">Boda Borg Bochum</div>
+                    <div class="option-desc">Abenteuerparcours voller Rätsel und Herausforderungen</div>
+                </div>
+                <div class="option-item">
+                    <div class="option-name">Eloria Erlebnisfabrik</div>
+                    <div class="option-desc">Live-Rätsel-Krimi & Escape Room Erlebnis</div>
+                </div>
+                <div class="option-item">
+                    <div class="option-name">Stand-Up Paddle Tour</div>
+                    <div class="option-desc">Oder eine entspannte Kanu-Tour auf dem Wasser</div>
+                </div>
+                <div class="option-item">
+                    <div class="option-name">Hochseilgarten</div>
+                    <div class="option-desc">Tree2tree, Kletterwald Freischütz & mehr</div>
+                </div>
+                <div class="option-item">
+                    <div class="option-name">Planetarium Bochum</div>
+                    <div class="option-desc">Vorträge, Lesungen, Hörspiele oder Konzerte</div>
+                </div>
+                <div class="option-item">
+                    <div class="option-name">Kino-Erlebnis</div>
+                    <div class="option-desc">Autokino Essen, Outdoorkino Fiege & mehr</div>
+                </div>
+            </div>
+            
+            <div class="special-note">
+                Du kannst dir etwas aussuchen, mich wählen lassen, wir können würfeln – oder du hast eine ganz andere Idee für etwas, was du schon immer mal machen wolltest!
+            </div>
+            
+            <div class="closing">
+                <div class="wishes">
+                    Egal was es wird: Ich freue mich auf Zeit mit dir!<br>
+                    Ich wünsche dir den allertollsten Geburtstag und dass möglichst viele deiner Wünsche real werden.<br><br>
+                    <strong>Ich bin sehr froh, dich zu kennen und mit dir befreundet zu sein!</strong>
+                </div>
+                <div class="signature">Love, Chris ❤️</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
